@@ -1,0 +1,39 @@
+{
+  "name": "devcontainer-elixir",
+  "dockerComposeFile": ["docker-compose.yml", "docker-compose.external.yml"],
+  "service": "app",
+  "workspaceFolder": "/home/vscode/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "sourcegraph.sourcegraph",
+        "eamodio.gitlens",
+        "GitHub.vscode-pull-request-github",
+        "JakeBecker.elixir-ls",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "phoenixframework.phoenix",
+        "DanLevett.pattern-links",
+        "mhutchie.git-graph",
+        "bradlc.vscode-tailwindcss",
+        "ryanluker.vscode-coverage-gutters",
+        "tenninebt.vscode-koverage",
+        "CodeStream.codestream",
+        "pomdtr.excalidraw-editor"
+      ]
+    }
+  },
+  "features": {
+    "github-cli": "latest",
+    "docker-in-docker": {
+      "version": "latest",
+      "moby": true,
+      "dockerDashComposeVersion": "v1"
+    }
+  },
+  "forwardPorts": [4000],
+  // Use 'updateContentCommand' to run commands after the code is updated.
+  // "updateContentCommand": "mix deps.get && mix compile",
+  "remoteUser": "vscode",
+  "shutdownAction": "stopCompose"
+}

@@ -21,6 +21,10 @@
         "CodeStream.codestream",
         "pomdtr.excalidraw-editor"
       ]
+    },
+    "codespaces": {
+      "openFiles": ["docs/welcome.md"]
+
     }
   },
   "features": {
@@ -31,9 +35,20 @@
       "version": "latest",
       "moby": true,
       "dockerDashComposeVersion": "v1"
+    },
+    "ghcr.io/dhoeric/features/google-cloud-cli:1": {}
+  },
+  "forwardPorts": [4000, "postgres:5432"],
+  "portsAttributes": {
+    "4000": {
+      "label": "Application",
+      "onAutoForward": "notify"
+    },
+    "postgres:5432": {
+      "label": "Postgres",
+      "onAutoForward": "notify"
     }
   },
-  "forwardPorts": [4000],
   // Use 'updateContentCommand' to run commands after the code is updated.
   // "updateContentCommand": "mix deps.get && mix compile",
   "remoteUser": "vscode",

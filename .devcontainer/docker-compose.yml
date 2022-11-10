@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: ghcr.io/corp-momenti/docker-images/momenti-elixir-dev:27e8ecc6cfd161617bb0f39560a7905a60ae079f
+    image: ghcr.io/corp-momenti/docker-images/momenti-elixir-dev:8339e0facd983766f92588b50e1326799090a90a
     volumes:
       - ..:/home/vscode/workspace:cached
       - build:/home/vscode/workspace/_build

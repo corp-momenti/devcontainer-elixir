@@ -1,14 +1,39 @@
 version: '3.8'
 
 services:
+  traefik:
+    image: traefik:v2.9
+    command:
+      - --entrypoints.postgres.address=:5432
+      - --entrypoints.jaeger.address=:16686
+      - --api.insecure=true
+      - --providers.docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
   postgres:
     image: postgres:13.4-alpine
+    labels:
+      - traefik.tcp.routers.pg-router.entrypoints=postgres
+      - traefik.tcp.routers.pg-router.rule=HostSNI(`*`)
+      - traefik.tcp.routers.pg-router.service=pg-service
+      - traefik.tcp.services.pg-service.loadbalancer.server.port=5432
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
 
-  # add more external services
+  jaeger:
+    image: jaegertracing/all-in-one:1.38
+    labels:
+      - traefik.tcp.routers.jaeger-router.entrypoints=jaeger
+      - traefik.tcp.routers.jaeger-router.rule=HostSNI(`*`)
+      - traefik.tcp.routers.jaeger-router.service=jaeger-service
+      - traefik.tcp.services.jaeger-service.loadbalancer.server.port=16686
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+
+  # add more external services here
 
 volumes:
   postgres-data:

@@ -24,7 +24,6 @@
     },
     "codespaces": {
       "openFiles": ["docs/welcome.md"]
-
     }
   },
   "features": {
@@ -38,15 +37,20 @@
     },
     "ghcr.io/dhoeric/features/google-cloud-cli:1": {}
   },
-  "forwardPorts": [4000, "postgres:5432"],
+  "forwardPorts": [4000, 5432, 8080, 16686],
   "portsAttributes": {
     "4000": {
       "label": "Application",
       "onAutoForward": "notify"
     },
-    "postgres:5432": {
-      "label": "Postgres",
-      "onAutoForward": "notify"
+    "5432": {
+      "label": "Postgres"
+    },
+    "8080": {
+      "label": "traefik"
+    },
+    "16686": {
+      "label": "jaeger"
     }
   },
   // Use 'updateContentCommand' to run commands after the code is updated.

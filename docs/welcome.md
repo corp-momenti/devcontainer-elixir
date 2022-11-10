@@ -1,4 +1,3 @@
-
 ## Welcome
 
 * Create new mix project with `mix phx.new --app <APP_NAME> .`

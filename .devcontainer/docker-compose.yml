@@ -13,7 +13,7 @@ services:
     command: sleep infinity
     init: true
     privileged: true
-    network_mode: service:postgres
+    network_mode: service:traefik
     environment:
       WARNINGS_AS_ERRORS: 'false'
 

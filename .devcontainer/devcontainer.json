@@ -19,7 +19,8 @@
         "ryanluker.vscode-coverage-gutters",
         "tenninebt.vscode-koverage",
         "CodeStream.codestream",
-        "pomdtr.excalidraw-editor"
+        "pomdtr.excalidraw-editor",
+        "marp-team.marp-vscode"
       ]
     },
     "codespaces": {

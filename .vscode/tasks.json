@@ -12,6 +12,40 @@
       "label": "browse jaeger",
       "command": "${input:open_jaeger}",
       "problemMatcher": []
+    },
+    {
+      "label": "run livebook",
+      "type": "shell",
+      "command": "livebook server",
+      "hide": true,
+      "isBackground": true,
+      "presentation": { "reveal": "silent" },
+      "options": {
+        "env": {
+          "LIVEBOOK_WITHIN_IFRAME": "true",
+          "LIVEBOOK_TOKEN_ENABLED": "false",
+          "LIVEBOOK_HOME": "${workspaceFolder}/docs/",
+          "LIVEBOOK_PORT": "9090",
+          "LIVEBOOK_IFRAME_PORT": "9091"
+        }
+      },
+      "problemMatcher": {
+        "owner": "livebook",
+        "pattern":{
+          "regexp": ".*"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^\\[Livebook\\] Application running at.*",
+          "endsPattern": "^\\[Livebook\\] Application running at.*"
+        }
+      }
+    },
+    {
+      "label": "browse livebook",
+      "command": "${input:open_livebook}",
+      "dependsOn": "run livebook",
+      "problemMatcher": []
     }
   ],
   "inputs": [
@@ -26,6 +60,12 @@
       "type": "command",
       "command": "simpleBrowser.api.open",
       "args": "http://localhost:16686"
+    },
+    {
+      "id": "open_livebook",
+      "type": "command",
+      "command": "simpleBrowser.api.open",
+      "args": "http://localhost:9090"
     }
   ]
 }

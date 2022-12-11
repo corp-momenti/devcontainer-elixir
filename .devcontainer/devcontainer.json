@@ -50,6 +50,12 @@
     "8080": {
       "label": "traefik"
     },
+    "9090": {
+      "label": "livebook"
+    },
+    "9091": {
+      "label": "livebook iframe"
+    },
     "16686": {
       "label": "jaeger"
     }
